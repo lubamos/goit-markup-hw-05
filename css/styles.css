@@ -428,6 +428,9 @@ h2 {
 
   fill: var(--soc-color);
   border-radius: 50%;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .employees-soc-icon {
@@ -471,6 +474,9 @@ h2 {
   fill: var(--soc-color);
   border: 1px solid var(--soc-color);
   border-radius: 4px;
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .clients-link:hover,
 .clients-link:focus {
