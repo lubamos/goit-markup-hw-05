@@ -83,6 +83,7 @@ p {
 .header-link-current {
   display: inline-block;
   padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 .header-list-cont {
@@ -100,6 +101,7 @@ p {
 
 .header-list,
 .header-link {
+  position: relative;
   color: var(--primary-text-color);
   list-style: none;
   text-decoration: none;
@@ -122,6 +124,8 @@ p {
 
 .header-list-cont,
 .header-link-cont {
+  position: relative;
+
   display: inline-flex;
   align-items: center;
   color: var(--text-color);
@@ -134,18 +138,32 @@ p {
 }
 
 .header-link-current {
+  position: relative;
+
   list-style: none;
   text-decoration: none;
   color: var(--hover-color);
 }
+
 .header-link-current::after {
   content: "";
-  display: block;
 
-  background-color: var(--current-page-after);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  display: block;
+  width: 100%;
   height: 4px;
   border-radius: 4px;
-  margin-top: 28px;
+
+  background-color: var(--current-page-after);
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-link:hover::after {
+  transform: scaleX(1);
 }
 .header-envelope,
 .header-smartfon {
@@ -481,6 +499,8 @@ a:focus {
   color: var(--body-background-color);
   font-size: 26px;
   line-height: 1.19;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .logo-footer .web {
   color: var(--hover-color);
@@ -553,6 +573,8 @@ a:focus {
 
   color: var(--body-background-color);
   background-color: var(--background-social);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-link-icon {
   fill: var(--body-background-color);
@@ -637,6 +659,10 @@ a:focus {
   line-height: 1.63;
   font-family: inherit;
   cursor: pointer;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button-current-btn {
   display: inline-block;
@@ -651,6 +677,8 @@ a:focus {
   line-height: 1.63;
   font-family: inherit;
   cursor: pointer;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button:hover,
 .button:focus {
@@ -681,6 +709,8 @@ button:focus {
   width: 370px;
   margin-right: 30px;
   margin-bottom: 30px;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .portfolio-item:hover,
 .portfolio-item:focus {
@@ -719,26 +749,34 @@ button:focus {
   max-width: 100%;
   height: auto;
 }
+.portfolio-image {
+  position: relative;
+  overflow: hidden;
+}
+.portfolio-image::after {
+  display: inline-block;
+  content: "Ресурс предлагает комплексные предложения с разным уровнем функционала и сервисов. Все это позволит посетителю получить исчерпывающие сведения о компании или частном лице.";
 
-.overlay-portfolio {
   position: absolute;
   left: 0;
-  bottom: 110px;
+  bottom: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   margin: 0;
   padding: 63px 24px;
-  background-color: var(--section-portfolio-overlay);
+
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.56;
-
   letter-spacing: 0.03em;
 
+  background-color: var(--section-portfolio-overlay);
   color: var(--body-background-color);
-  display: none;
 }
-.portfolio-item:hover .overlay-portfolio {
-  display: block;
+.portfolio-item:hover .portfolio-image::after {
+  transform: translateY(0%);
 }
